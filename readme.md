@@ -20,13 +20,10 @@ Here's how to use it:
 
 ```dos
     C:\> cinst MMDB.WebsiteBeaterUpper
-          .SendEmail("This is the subject",                       //Give a subject
-                new {FirstName="Mike", LastName="Mooney" },       //and a model object
-                "Hello <b>@Model.FirstName @Model.LastName</b>!", //and a Razor view
-                new List<string> {"to@example.com"},              //and a list of people to send it do
-                "from@example.com"                               //and who you are
-          );
+```
 
 * Step 2: Run it
+
 ```dos
 	C:\>WebsiteBeaterUpper
+```
