@@ -73,7 +73,6 @@ namespace MMDB.Testing.WebsiteBeaterUpper
 
 		private void ThreadProc(dynamic inputData)
 		{
-			DateTime startTime = DateTime.Now;
 			int requestedRunCount = inputData.RequestedRunCount;
 			string url = inputData.Url;
 			for(int i = 0; i < requestedRunCount; i++)
@@ -83,9 +82,10 @@ namespace MMDB.Testing.WebsiteBeaterUpper
 					this.RaiseCancel(Thread.CurrentThread.ManagedThreadId);
 					break;
 				}
+				var request = (HttpWebRequest)HttpWebRequest.Create(url);
+				DateTime startTime = DateTime.Now;
 				try 
 				{
-					var request = (HttpWebRequest)HttpWebRequest.Create(url);
 					using(var response = request.GetResponse())
 					{
 						using(var responseStream = response.GetResponseStream())
@@ -258,6 +258,25 @@ namespace MMDB.Testing.WebsiteBeaterUpper
 			catch (Exception err)
 			{
 				MessageBox.Show("Unable to read recently used list from " + fileName + Environment.NewLine + err.ToString());
+			}
+		}
+
+		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			_stopRequested = true;
+			if(_threadList != null)
+			{
+				foreach(var thread in _threadList)
+				{
+					try 
+					{
+						if(thread != null && thread.IsAlive)
+						{
+							thread.Abort();
+						}
+					}
+					catch {}
+				}
 			}
 		}
 	}
