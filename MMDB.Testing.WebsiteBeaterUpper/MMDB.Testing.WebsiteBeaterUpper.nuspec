@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>MMDB.WebsiteBeaterUpper</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>MMDB Solutions LLC, Mike Mooney</authors>
+    <owners>MMDB Solutions LLC, Mike Mooney</owners>
+    <licenseUrl>https://github.com/mmooney/MMDB.Testing/blob/master/license.txt</licenseUrl>
+    <projectUrl>https://github.com/mmooney/MMDB.Testing</projectUrl>
+    <iconUrl>http://www.gravatar.com/avatar/583bdba0c32e151c9d2eafdd32555c17.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>MMDB Website Beater Upper | Please install with chocolatey (http://nuget.org/List/Packages/chocolatey).</description>
+    <copyright>Copyright 2013 MMDB Solutions LLC</copyright>
+		<summary>A tool for beating your website senseless</summary>
+    <tags>web testing .net</tags>
+  </metadata>
+	<files>
+		<file src="tools\**" target="tools"></file>
+		<file src="..\packages\Newtonsoft.Json.5.0.3\lib\net40\*.dll" target="lib\net40-Client"></file>
+	</files>
+</package>
